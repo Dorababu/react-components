@@ -69,7 +69,7 @@ class App extends Component { // state-full component
     return (
         <div className={classes.App}>
           
-          <h1 className={assignedClasses.join(' ')}>React Tutorial</h1>
+          <h1 className={assignedClasses.join(' ')}>React Components</h1>
           <button className={btnClass} onClick={this.personIterateHandler} key='loadPersons'>Load Persons</button> 
           
           {personsList} {/* Display content using iterator */}
