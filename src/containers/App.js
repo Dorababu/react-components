@@ -4,16 +4,40 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component { // state-full component
-  state = {
-    persons: [
-      { id: '1', name: 'Dora', age: '32' },
-      { id: '2', name: 'Chai', age: '33' },
-      { id: '3', name: 'Hari', age: '34' }
-    ],
-    showPersons: false,
-    togglePersons: false,
-    iteratePersons: false
+
+  constructor(props) {
+    super(props);
+    console.log('App JS Constructor');
+    this.state = {
+      persons: [
+        { id: '1', name: 'Dora', age: '32' },
+        { id: '2', name: 'Chai', age: '33' },
+        { id: '3', name: 'Hari', age: '34' }
+      ],
+      showPersons: false,
+      togglePersons: false,
+      iteratePersons: false
+    }
   }
+
+  componentWillMount() {
+    console.log('App JS ComponetWillMount');
+  }
+
+  componentDidMount() {
+    console.log('App JS ComponetDidMount');
+  }
+  
+  // state = {
+  //   persons: [
+  //     { id: '1', name: 'Dora', age: '32' },
+  //     { id: '2', name: 'Chai', age: '33' },
+  //     { id: '3', name: 'Hari', age: '34' }
+  //   ],
+  //   showPersons: false,
+  //   togglePersons: false,
+  //   iteratePersons: false
+  // }
 
   changedStateHandler = (e, id) => {
     const personIndex = this.state.persons.findIndex(person => {
@@ -39,6 +63,7 @@ class App extends Component { // state-full component
   }
 
   render() {
+    console.log('App JS Render');
     let personsList = null;
     if (this.state.iteratePersons) {
       personsList =

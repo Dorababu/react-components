@@ -2,7 +2,30 @@ import React, { Component } from 'react';
 import Person from './Person/Person'
 
 class Persons extends Component {
+    constructor(props) {
+        super(props);
+        console.log('Persons JS Constructor');
+    }
+
+    componentWillMount() {
+        console.log('Persons JS ComponetWillMount');
+    }
+
+    componentDidMount() {
+        console.log('Persons JS ComponetDidMount');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('Person JS ComponentWillReceiveProps',nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Person JS ShouldComponentUpdate', nextProps, nextState);
+        return nextProps.persons !== this.props.persons;
+    }
+
     render() {
+        console.log('Persons JS Render');
         return this.props.persons.map((person, index) => {
             return <Person
                 name={person.name}
