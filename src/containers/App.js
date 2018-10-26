@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component { // state-full component
   state = {
@@ -14,11 +15,11 @@ class App extends Component { // state-full component
     iteratePersons: false
   }
 
-  changedStateHandler = (e, id) => { 
+  changedStateHandler = (e, id) => {
     const personIndex = this.state.persons.findIndex(person => {
       return person.id === id;
     });
-    const person = {...this.state.persons[personIndex]};
+    const person = { ...this.state.persons[personIndex] };
     person.name = e.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
@@ -27,10 +28,10 @@ class App extends Component { // state-full component
     });
   }
 
-  deletePersonHandler = (index) => { 
-    const persons = [...this.state.persons]; 
-    persons.splice(index,1) 
-    this.setState({ persons: persons});
+  deletePersonHandler = (index) => {
+    const persons = [...this.state.persons];
+    persons.splice(index, 1)
+    this.setState({ persons: persons });
   }
 
   personIterateHandler = () => {
@@ -38,45 +39,30 @@ class App extends Component { // state-full component
   }
 
   render() {
-
-  let btnClass = '';
-
     let personsList = null;
-    if (this.state.iteratePersons) { // Display content using iterator 
-      personsList = (
+    if (this.state.iteratePersons) {
+      personsList =
         <div>
           <Persons
-            persons={this.state.persons} 
-            changed={this.changedStateHandler} 
-            clicked={this.deletePersonHandler} /> 
+            persons={this.state.persons}
+            changed={this.changedStateHandler}
+            clicked={this.deletePersonHandler}
+          />
         </div>
-      );
-  
-      btnClass = classes.olive;
-    }
-
-    const assignedClasses = [];
-    if(this.state.persons.length === 3) {
-      assignedClasses.push(classes.green);
-    }
-    if(this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if(this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
     }
 
     return (
-        <div className={classes.App}>
-          
-          <h1 className={assignedClasses.join(' ')}>React Components</h1>
-          <button className={btnClass} onClick={this.personIterateHandler} key='loadPersons'>Load Persons</button> 
-          
-          {personsList} {/* Display content using iterator */}
-        </div>
+      <div className={classes.App}>
+        <Cockpit
+          appTitle={this.props.title}
+          loadPersons={this.personIterateHandler}
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+        />
+        {personsList}
+      </div>
     );
   }
 }
 
 export default App;
-//export default Radium(App);
