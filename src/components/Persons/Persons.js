@@ -24,6 +24,14 @@ class Persons extends Component {
         return nextProps.persons !== this.props.persons;
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Person JS ComponentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate(nextProps, nextState) {
+        console.log('Person JS ComponentDidUpdate');
+    }
+
     render() {
         console.log('Persons JS Render');
         return this.props.persons.map((person, index) => {

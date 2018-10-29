@@ -1,8 +1,5 @@
-.Cockpit {
-  text-align: center;
-}
 
-.Cockpit button {
+.Button {
   background-color: darkorange;
       border: none;
       padding: 10px;
@@ -13,11 +10,11 @@
       font-size: 14px;
       margin: 20px;
 }
-.ACockpitpp button:hover {
+.Button:hover {
   background-color: green;
   cursor:pointer;
 }
-.Cockpit button.olive {background-color: olive}
+.Button.olive {background-color: olive}
 .red {color: red}
 .green {color: green}
 .bold {font-size: 50px}

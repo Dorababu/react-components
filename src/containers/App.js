@@ -27,7 +27,7 @@ class App extends Component { // state-full component
   componentDidMount() {
     console.log('App JS ComponetDidMount');
   }
-  
+
   // state = {
   //   persons: [
   //     { id: '1', name: 'Dora', age: '32' },
