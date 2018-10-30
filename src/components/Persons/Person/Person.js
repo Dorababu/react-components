@@ -16,6 +16,9 @@ class Person extends Component {
 
     componentDidMount() {
         console.log('Person JS ComponetDidMount');
+        if(this.props.position === 0) {
+            this.inputElement.focus();
+        }
     }
 
     render() {
@@ -24,7 +27,7 @@ class Person extends Component {
             <Aux> {/* <div className='Person' onClick={props.deletePerson} style={style}> */}
                 <p onClick={this.props.click}>I'm {this.props.name} and my age is {this.props.age} </p>  {/* binding props data dynamically and binding function refernce*/}
                 <p>{this.props.children}</p> {/* getting child props */}
-                <input type='text' onChange={this.props.changeMe} value={this.props.name} /> {/* two way data binding */}
+                <input type='text' onChange={this.props.changeMe} value={this.props.name} ref={(inp) => {this.inputElement = inp}} /> {/* two way data binding */}
             </Aux>
         );
     }
