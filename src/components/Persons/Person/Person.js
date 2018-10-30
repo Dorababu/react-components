@@ -8,6 +8,7 @@ class Person extends Component {
     constructor(props) {
         super(props);
         console.log('Person JS Constructor');
+        this.inputElement = React.createRef(); // creating ref from react 16.3 version onwards
     }
 
     componentWillMount() {
@@ -17,7 +18,7 @@ class Person extends Component {
     componentDidMount() {
         console.log('Person JS ComponetDidMount');
         if(this.props.position === 0) {
-            this.inputElement.focus();
+            this.inputElement.current.focus();
         }
     }
 
@@ -27,7 +28,8 @@ class Person extends Component {
             <Aux> {/* <div className='Person' onClick={props.deletePerson} style={style}> */}
                 <p onClick={this.props.click}>I'm {this.props.name} and my age is {this.props.age} </p>  {/* binding props data dynamically and binding function refernce*/}
                 <p>{this.props.children}</p> {/* getting child props */}
-                <input type='text' onChange={this.props.changeMe} value={this.props.name} ref={(inp) => {this.inputElement = inp}} /> {/* two way data binding */}
+                <input type='text' onChange={this.props.changeMe} value={this.props.name} ref={this.inputElement} /> {/* two way data binding */} 
+                {/* ref={(inp) => {this.inputElement = inp}} ref in react version < 16.3*/}
             </Aux>
         );
     }
