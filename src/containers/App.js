@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
+import Aux from '../components/hoc/Aux';
+import withClass from '../components/hoc/withClass'
 
 class App extends Component { // state-full component
 
@@ -77,7 +79,7 @@ class App extends Component { // state-full component
     }
 
     return (
-      <div className={classes.App}>
+      <Aux>
         <Cockpit
           appTitle={this.props.title}
           loadPersons={this.personIterateHandler}
@@ -85,9 +87,9 @@ class App extends Component { // state-full component
           showPersons={this.state.showPersons}
         />
         {personsList}
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
