@@ -12,13 +12,14 @@ class App extends Component { // state-full component
     console.log('App JS Constructor');
     this.state = {
       persons: [
-        { id: '1', name: 'Dora', age: '32' },
-        { id: '2', name: 'Chai', age: '33' },
-        { id: '3', name: 'Hari', age: '34' }
+        { id: '1', name: 'Dora', age: 32 },
+        { id: '2', name: 'Chai', age: 33 },
+        { id: '3', name: 'Hari', age: 34 }
       ],
       showPersons: false,
       togglePersons: false,
-      iteratePersons: false
+      iteratePersons: false,
+      toggleClicked: 0
     }
   }
 
@@ -61,7 +62,12 @@ class App extends Component { // state-full component
   }
 
   personIterateHandler = () => {
-    this.setState({ iteratePersons: !this.state.iteratePersons });
+    this.setState((prevState, props) => {
+      return {
+        iteratePersons: !prevState.iteratePersons,
+        toggleClicked: prevState.toggleClicked + 1
+      }
+    });
   }
 
   render() {
@@ -91,5 +97,6 @@ class App extends Component { // state-full component
     );
   }
 }
+
 
 export default withClass(App, classes.App);
