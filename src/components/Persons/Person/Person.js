@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classes from './Person.css';
 import Aux from '../../hoc/Aux';
 import withClass from '../../hoc/withClass'
+import {AuthContext} from '../../../containers/App'
 
 class Person extends Component {
     constructor(props) {
@@ -30,6 +31,9 @@ class Person extends Component {
         console.log('Person JS Render');
         return (
             <Aux> {/* <div className='Person' onClick={props.deletePerson} style={style}> */}
+                <AuthContext.Consumer>
+                    {auth => auth ? <p>Successfully Authentictated !!!</p> : <p>Failed to Login !!!</p>}
+                </AuthContext.Consumer>
                 <p onClick={this.props.click}>I'm {this.props.name} and my age is {this.props.age} </p>  {/* binding props data dynamically and binding function refernce*/}
                 <p>{this.props.children}</p> {/* getting child props */}
                 <input type='text' onChange={this.props.changeMe} value={this.props.name} ref={this.inputElement} /> {/* two way data binding */} 

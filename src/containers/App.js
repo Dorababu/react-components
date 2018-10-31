@@ -5,6 +5,8 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import Aux from '../components/hoc/Aux';
 import withClass from '../components/hoc/withClass'
 
+export const AuthContext = React.createContext(false);
+
 class App extends Component { // state-full component
 
   constructor(props) {
@@ -19,7 +21,8 @@ class App extends Component { // state-full component
       showPersons: false,
       togglePersons: false,
       iteratePersons: false,
-      toggleClicked: 0
+      toggleClicked: 0,
+      isAuthenticated: true
     }
   }
 
@@ -92,7 +95,9 @@ class App extends Component { // state-full component
           persons={this.state.persons}
           showPersons={this.state.showPersons}
         />
-        {personsList}
+        <AuthContext.Provider value={this.state.isAuthenticated}>
+          {personsList}
+        </AuthContext.Provider>
       </Aux>
     );
   }
